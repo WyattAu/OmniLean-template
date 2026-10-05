@@ -19,7 +19,7 @@ jobs:
       id-token: write
       actions: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run analysis
         uses: ossf/scorecard-action@v2.4.1
         with:
