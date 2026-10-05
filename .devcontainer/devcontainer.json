@@ -2,7 +2,7 @@
   // Image flavor: the official leanprover image with the toolchain the
   // repo pins. The nix flavor lives in .devcontainer/nix/.
   "name": "OmniLean",
-  "image": "ghcr.io/leanprover/lean4:stable",
+  "image": "leanprover/lean4:v4.16.0",
   "features": { "ghcr.io/devcontainers/features/git-lfs:1": {} },
   "postCreateCommand": "lake update && lake build && lake exe test",
   "customizations": {
