@@ -1,0 +1,6 @@
+.lake/
+build/
+.direnv/
+/result
+result
+.env

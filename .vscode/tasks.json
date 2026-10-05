@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "build", "type": "shell", "command": "lake build", "group": { "kind": "build", "isDefault": true }, "problemMatcher": [] },
+    { "label": "test", "type": "shell", "command": "lake exe test", "group": "test", "problemMatcher": [] },
+    { "label": "ci (all gates)", "type": "shell", "command": "make ci", "problemMatcher": [] }
+  ]
+}

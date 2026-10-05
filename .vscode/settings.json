@@ -1,0 +1,5 @@
+{
+  "lean4.infoview.autoOpen": true,
+  "lean4.leanToolchain": "auto",
+  "files.watcherExclude": { "**/.lake/**": true }
+}

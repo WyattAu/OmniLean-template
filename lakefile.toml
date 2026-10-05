@@ -1,0 +1,13 @@
+name = "omni-lean"
+version = "0.1.0"
+defaultTargets = ["Omni"]
+
+[[lean_lib]]
+name = "Omni"
+# Glob everything under Omni/ so new modules need no manifest edits.
+globs = ["Omni"]
+
+[[lean_exe]]
+name = "test"
+root = "Test"
+supportInterpreter = true

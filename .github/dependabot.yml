@@ -1,0 +1,8 @@
+version: 2
+updates:
+  # No dependabot ecosystem for Lake — the lean-toolchain pin + monthly
+  # bitrot cron carry version discipline.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

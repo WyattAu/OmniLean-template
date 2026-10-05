@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "leanprover.lean4",
+    "tekumara.typos-vscode",
+    "EditorConfig.EditorConfig",
+    "github.vscode-github-actions"
+  ]
+}
