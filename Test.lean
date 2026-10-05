@@ -1,7 +1,7 @@
+import Omni
+
 /-! Executable test runner — `lake exe test`. Assertions here are checked
 by the compiler + runtime on every CI run. -/
-
-import Omni
 
 open Omni
 
