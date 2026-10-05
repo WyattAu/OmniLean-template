@@ -24,8 +24,11 @@ jobs:
       - uses: leanprover/lean-action@v1
         with:
           lake-package-directory: .
-          test: true
+          build: true
+          test: false
+          lint: false
           use-github-cache: true
+      - run: lake exe test
 
   contract:
     runs-on: ubuntu-latest
