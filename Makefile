@@ -1,6 +1,6 @@
 # Thin wrapper — the same verbs in every Omni template. Lake is canonical;
 # these targets keep the cross-language verbs identical.
-.PHONY: build test contract ci clean
+.PHONY: bench bench-update build test contract ci clean
 
 build:
 	lake build
@@ -13,6 +13,12 @@ contract:
 
 ## What CI gates before merge (mirror of .github/workflows/ci.yml):
 ci: contract build test
+
+bench:
+	./scripts/bench-budget.sh
+
+bench-update:
+	./scripts/bench-budget.sh --update
 
 clean:
 	rm -rf .lake build

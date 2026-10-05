@@ -35,3 +35,20 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: ./scripts/check-contract.sh
+
+  # Loop 2: performance budget. Advisory for one loop, then graduates to a
+  # blocking gate (LOOP.md graduation policy). Same scripts/ commands the
+  # developer runs locally - never a CI-only measurement path.
+  perf:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: .
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+      - run: make bench
