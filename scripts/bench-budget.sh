@@ -20,7 +20,6 @@ now_ms() {
   python3 -c 'import time; print(int(time.time() * 1000))'
 }
 
-
 rm -rf .lake/build
 start="$(now_ms)"
 lake build >/dev/null
@@ -33,7 +32,7 @@ olean_bytes="$(python3 -c 'import pathlib; print(sum(p.stat().st_size for p in p
 }
 
 printf 'olean-bytes\t%s\tbytes\tgate\nlake-build-ms\t%s\tms\tinfo\n' \
-  "$olean_bytes" "$((end - start))" > "$CURRENT"
+  "$olean_bytes" "$((end - start))" >"$CURRENT"
 
 python3 scripts/compare-bench.py "$BASELINE" "$CURRENT" \
   --threshold-pct "$THRESHOLD_PCT" "${UPDATE[@]+"${UPDATE[@]}"}"
