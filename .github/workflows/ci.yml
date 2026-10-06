@@ -52,3 +52,20 @@ jobs:
           lint: false
           use-github-cache: false
       - run: make bench
+
+  # Loop 3: determinism verification. Advisory for one loop, then blocking where
+  # the toolchain is deterministic (LOOP.md graduation policy). Same
+  # scripts/ command a developer runs locally.
+  repro:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: .
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+      - run: make repro
