@@ -18,6 +18,17 @@ def safeHead : List α → Option α
 def clamp (lo hi : Nat) (x : Nat) : Nat :=
   if lo > hi then lo else max lo (min hi x)
 
+/-- REQ-002: inside the bounds, `clamp` is exactly the nested min/max. -/
+theorem clamp_eq_in_bounds (lo hi x : Nat) (h : lo ≤ hi) :
+    clamp lo hi x = max lo (min hi x) := by
+  simp [clamp, show ¬(lo > hi) from by omega]
+
+/-- REQ-002: the documented `lo > hi` behavior is a theorem too — the
+REQUIREMENTS.md sentence and the kernel cannot disagree. -/
+theorem clamp_eq_lo (lo hi x : Nat) (h : lo > hi) :
+    clamp lo hi x = lo := by
+  simp [clamp, h]
+
 /-- REQ-001: `safeHead` agrees with `List.head` exactly on non-empty lists.
 The kernel checks this proof on every build — the property cannot rot. -/
 theorem safeHead_eq_head {xs : List α} (h : xs ≠ []) :

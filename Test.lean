@@ -14,3 +14,10 @@ def main : IO Unit := do
   assert! (clamp 0 10 5 == 5)
   assert! (clamp 0 10 99 == 10)
   IO.println "omni-lean: all checks passed"
+
+/-! Proof audit: the axioms each theorem depends on are printed in CI logs.
+An incomplete proof would surface `sorryAx` here — the CI grep gate below
+fails the build on any `sorry` in the source tree. -/
+#print axioms Omni.safeHead_eq_head
+#print axioms Omni.clamp_eq_in_bounds
+#print axioms Omni.clamp_eq_lo

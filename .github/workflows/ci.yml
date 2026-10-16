@@ -31,6 +31,16 @@ jobs:
           lint: false
           use-github-cache: true
       - run: lake exe test
+      # Mathlib-grade proof hygiene: an incomplete proof (`sorry`) must fail
+      # the build, and the axioms each theorem rests on are printed above for
+      # audit. The kernel checks every proof on every run — this gate ensures
+      # none of them is quietly incomplete.
+      - name: proof completeness (no sorry anywhere)
+        run: |
+          if grep -rn '\bsorry\b' Omni/ Test.lean; then
+            echo '::error::incomplete proof: sorry found (see axioms printed above)'
+            exit 1
+          fi
 
   contract:
     runs-on: ubuntu-latest
